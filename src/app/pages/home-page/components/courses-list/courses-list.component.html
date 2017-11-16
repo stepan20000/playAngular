@@ -1,0 +1,8 @@
+<div class="courses" *ngIf="courses.length">
+  <ul class="courses__ul">
+    <app-course-item
+      *ngFor="let course of courses"
+      [course]="course"
+    ></app-course-item>
+  </ul>
+</div>

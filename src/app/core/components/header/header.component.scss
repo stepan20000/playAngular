@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+
+.header {
+  height: $header-height;
+  width: 90%;
+  margin: auto;
+
+  &__header {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &__container {
+    height: 100%;
+    display: inline-block;
+    line-height: 70px;
+    vertical-align: middle;
+
+    &_logo {
+      width: 35%;
+      float: left;
+    }
+
+    &_login {
+      line-height: 35px;
+      width: 20%;
+      float: right;
+    }
+
+    __courses {
+      flost: none;
+      border: 1px solid black;
+    }
+  }
+
+  &__logo-img {
+    height: 100%;
+  }
+
+  &__courses {
+    display: inline-block;
+  }
+
+  &__img-wrapper {
+    height: 100%;
+    display: inline-block;
+  }
+}
+
+
+
+

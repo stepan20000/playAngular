@@ -1,0 +1,9 @@
+@import './core/styles/variables';
+
+.app-root {
+  max-width: 650px;
+  height: (vh - $header-height - $footer-height);
+  margin: auto;
+  padding: 10px;
+  border: 1px solid lightgray;
+}

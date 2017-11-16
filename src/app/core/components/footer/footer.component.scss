@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.footer {
+  text-align: center;
+  font-style: italic;
+  border: 1px solid gray;
+  height: $footer-height;
+  line-height: $footer-height;
+  vertical-align: middle;
+}
