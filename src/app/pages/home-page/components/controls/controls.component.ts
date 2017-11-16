@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
-  styleUrls: ['./controls.component.css']
+  styleUrls: ['./controls.component.scss']
 })
-export class ControlsComponent implements OnInit {
+export class ControlsComponent {
+
+  textToFind: string;
 
   constructor() { }
 
-  ngOnInit() {
+  onSubmit() {
+    console.log('onSubmit Form', this.textToFind);
   }
+
 
 }

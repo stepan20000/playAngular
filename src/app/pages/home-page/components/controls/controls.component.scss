@@ -1,0 +1,19 @@
+.controls {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__input {
+
+   }
+
+   &__find {
+     margin-left: 10px;
+    }
+
+    &__add {
+      margin-left: 10px;
+      flex-basis: 20%;
+     }
+}

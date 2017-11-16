@@ -15,4 +15,11 @@ export class CourseService {
     return this.courses;
   }
 
+  deleteCourse(courseForDeleting: ICourseItem) {
+    const index = this.courses.indexOf(courseForDeleting);
+    if (index > -1) {
+      this.courses.splice(index, 1);
+    }
+  }
+
 }

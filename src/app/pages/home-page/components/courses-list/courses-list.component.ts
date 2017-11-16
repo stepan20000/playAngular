@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { CourseService } from '../../../../core/services/course-service.service';
 import { ICourseItem } from '../../../../core/interfaces/course-item.interface';
@@ -18,6 +18,11 @@ export class CoursesListComponent implements OnInit {
 
   ngOnInit() {
     this.courses = this.courseService.getCourses();
+  }
+
+  deleteCourse(course: ICourseItem) {
+    console.log('course.id', course.id);
+    this.courseService.deleteCourse(course);
   }
 
 }

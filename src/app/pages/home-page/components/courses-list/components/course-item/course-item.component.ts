@@ -9,6 +9,7 @@ import { ICourseItem } from '../../../../../../core/interfaces/course-item.inter
 })
 export class CourseItemComponent {
   @Input() course: ICourseItem;
+  @Output() deleteCourse = new EventEmitter();
 
   getDuration(): string {
     let hours, minutes;
@@ -18,6 +19,9 @@ export class CourseItemComponent {
     return `${hours > 0 ? hours + 'h' : ''} ${minutes}min`;
   }
 
+  onDeleteCourse() {
+    this.deleteCourse.emit(this.course);
+  }
 
 }
 

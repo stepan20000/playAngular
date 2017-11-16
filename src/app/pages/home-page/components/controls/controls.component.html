@@ -1,3 +1,14 @@
-<p>
-  controls works!
-</p>
+<div class="controls">
+  <form (ngSubmit)="onSubmit(); findForm.reset();" #findForm="ngForm">
+    <input
+      class="controls__input"
+      type="text"
+      name="textToFind"
+      [(ngModel)]="textToFind"
+      placeholder="name fragment or date"
+      required
+    >
+    <button class="controls__find" [disabled]="findForm.form.invalid">Find</button>
+  </form>
+  <button class="controls__add">Add course</button>
+</div>

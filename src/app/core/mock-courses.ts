@@ -24,7 +24,7 @@ export const courses: Array<ICourseItem> = [
      Sed luctus nulla turpis, vel commodo nisl venenatis at. . `
   },
   {
-    id: 1,
+    id: 3,
     title: 'In class course',
     creatingDate: 1510437600000,
     duration: 45,
