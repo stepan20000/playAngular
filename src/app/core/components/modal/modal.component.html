@@ -1,0 +1,14 @@
+<div class="modal" *ngIf="showMe" (click)="emitHideModal()">
+  <div class="modal__content">
+    <div class="modal__header">
+      <button class="modal__close" (click)="emitHideModal()">&#10005;</button>
+    </div>
+    <div class="modal__info">
+      {{message}}
+    </div>
+    <div class="modal__controls">
+      <button class="modal-button" (click)="emitAgree()">Yes</button>
+      <button class="modal-button" (click)="emitHideModal()">No</button>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ControlsComponent } from './pages/home-page/components/controls/controls.component';
 import { CoursesListComponent } from './pages/home-page/components/courses-list/courses-list.component';
 import { CourseItemComponent } from './pages/home-page/components/courses-list/components/course-item/course-item.component';
+import { ModalComponent } from './core/components/modal/modal.component'
 
 import { CourseService } from './core/services/course-service.service';
 
@@ -29,6 +30,7 @@ import { CourseService } from './core/services/course-service.service';
     ControlsComponent,
     CoursesListComponent,
     CourseItemComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
