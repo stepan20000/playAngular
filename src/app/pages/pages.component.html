@@ -1,1 +1,6 @@
-<app-home-page></app-home-page>
+<app-home-page *ngIf="isLogined"></app-home-page>
+
+<app-login-page *ngIf="!isLogined" (login)="onLogin($event)"></app-login-page>
+
+
+<!--<app-home-page></app-home-page>-->

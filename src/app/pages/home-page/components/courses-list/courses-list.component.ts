@@ -18,25 +18,25 @@ export class CoursesListComponent implements OnInit {
 
 
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService)  {
     this.courses = [];
 
   }
 
   ngOnInit() {
-    this.courses = this.courseService.getCourses();
+    this.courseService.getCourses().subscribe(courses => this.courses = courses);
     this.hideModal();
   }
 
   deleteCourse() {
     this.hideModal();
-    this.courseService.deleteCourse(this.courseForDeleting);
+    this.courseService.deleteCourse(this.courseForDeleting.id).subscribe(param => this.courses = param);
   }
 
   showModal(deleteMe?: ICourseItem) {
     if (deleteMe) {
       this.courseForDeleting = deleteMe;
-      this.deleteModalMessage = `Are you sure you want to delete the ${this.courseForDeleting.title} ${this.courseForDeleting.id}?`;
+      this.deleteModalMessage = `Do you really want to delete the ${this.courseForDeleting.title} ${this.courseForDeleting.id}?`;
     }
     this.isDeleteModalShown = true;
   }
