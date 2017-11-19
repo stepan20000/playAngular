@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { LoginService } from '..//core/services/login.service';
 
@@ -6,19 +6,19 @@ import { LoginService } from '..//core/services/login.service';
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss']
+  styleUrls: ['./pages.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PagesComponent implements OnInit {
-  isLogined: boolean;
 
-  constructor(private loginService: LoginService) { }
+  constructor(protected loginService: LoginService) { }
 
   ngOnInit() {
-    this.isLogined = this.loginService.isLogined();
+    this.loginService.getUser();
   }
 
-  onLogin() {
-    this.isLogined = true;
+  onLogin(e) {
+    console.log(e);
   }
 
 }

@@ -16,13 +16,6 @@ export class LoginService {
 
   }
 
-  isLogined(): boolean {
-    this.getUser();
-    if (this.user) {
-      return this.user.isLogined;
-    }
-    return false;
-  }
 
   getUser(): void {
     if (this.user)  { return; }
@@ -30,12 +23,9 @@ export class LoginService {
     if (savedUser) {
       this.user = savedUser;
     }
-    // console.log('this.user.isLogined getUser', this.user.isLogined);
   }
 
   login(username: string, password: string): Observable<IUser> {
-    console.log('service login', username, password);
-    console.log('this.http', this.http);
     return this.http.post<IUser>(loginApi, {
       username,
       password
@@ -43,11 +33,21 @@ export class LoginService {
   }
 
   logout() {
-
+    this.user = null;
+    this.clearUserFromLocalStorage();
   }
 
   writeUser(user: IUser) {
     this.user = user;
     this.localStorageService.set('user', user );
+  }
+
+  clearUserFromLocalStorage(): void {
+    this.localStorageService.remove('user');
+  }
+
+  giveUser(): IUser | false {
+    if (this.user) { return this.user; }
+    return false;
   }
 }

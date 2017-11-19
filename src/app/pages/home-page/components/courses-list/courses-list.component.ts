@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { CourseService } from '../../../../core/services/course-service.service';
 import { ICourseItem } from '../../../../core/interfaces/course-item.interface';
@@ -7,9 +7,10 @@ import { ICourseItem } from '../../../../core/interfaces/course-item.interface';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesListComponent implements OnInit {
+export class CoursesListComponent  {
   courses: Array<ICourseItem>;
 
   isDeleteModalShown: boolean;
@@ -18,14 +19,8 @@ export class CoursesListComponent implements OnInit {
 
 
 
-  constructor(private courseService: CourseService)  {
-    this.courses = [];
-
-  }
-
-  ngOnInit() {
-    this.courseService.getCourses().subscribe(courses => this.courses = courses);
-    this.hideModal();
+  constructor(protected courseService: CourseService)  {
+    this.courseService.getCourses();
   }
 
   deleteCourse() {
@@ -43,6 +38,10 @@ export class CoursesListComponent implements OnInit {
 
   hideModal() {
     this.isDeleteModalShown = false;
+  }
+
+  showMeCourses() {
+    console.log('show me courses', this.courses);
   }
 
 }

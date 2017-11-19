@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
-  styleUrls: ['./controls.component.scss']
+  styleUrls: ['./controls.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControlsComponent {
 

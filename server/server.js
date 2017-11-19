@@ -97,6 +97,18 @@ app.get('/delete-course/:id', function(request, response) {
     response.status(200).send(courses);
 });
 
+app.get('/get-course/:id', function(request, response) {
+  const id = +request.params.id;
+  const course = courses.find(course => course.id === id);
+  course ? response.status(200).send(course) : response.status(404).send('Not found');
+});
+
+app.post('/add-course', function (request, response) {
+  const course = request.body;
+  courses = courses.filter(item => item.id === course.id).push(course);
+  response.status(200).send(courses);
+});
+
 
 
 
