@@ -25,7 +25,7 @@ export class CoursesListComponent  {
 
   deleteCourse() {
     this.hideModal();
-    this.courseService.deleteCourse(this.courseForDeleting.id).subscribe(param => this.courses = param);
+    this.courseService.deleteCourse(this.courseForDeleting.id);
   }
 
   showModal(deleteMe?: ICourseItem) {

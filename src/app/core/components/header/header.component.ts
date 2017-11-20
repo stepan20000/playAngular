@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(protected loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.getUser();
+    this.loginService.readUser();
   }
 
   onLogoff(e) {

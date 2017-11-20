@@ -6,6 +6,7 @@
   border: 1px solid gray;
   border-radius: 3px;
   padding: 8px;
+
   &__info {
 
   }
@@ -44,4 +45,17 @@
   &__description {
     text-indent: 25px;
   }
+
+  &__date {
+    text-align-last: right;
+    flex-basis: 35%;
+  }
+}
+
+.fresh {
+  border: 5px solid lawngreen;
+}
+
+.upcoming {
+  border: 5px solid cornflowerblue;
 }

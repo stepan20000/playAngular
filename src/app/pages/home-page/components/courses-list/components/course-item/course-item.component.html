@@ -1,9 +1,11 @@
-<li class="course-item">
+<li class="course-item" app-DateDirective [date]="course.creatingDate">
   <section class="course-item__info">
     <div class="course-item__header">
-      <h3 class="course-item__title">{{course.title}}</h3>
+      <h3 class="course-item__title">{{course.title | uppercase}}</h3>
       <p class="course-item__id">{{course.id}}</p>
-      <p class="course-item__duration">{{getDuration()}}</p>
+      <p class="course-item__duration">{{course.duration | getDuration}}</p>
+      <span *ngIf="course.topRated">&#x2606;</span>
+      <p class="course-item__date">{{course.creatingDate | date}}</p>
     </div>
     <div class="course-item__description">
       {{course.description}}

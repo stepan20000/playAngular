@@ -11,15 +11,12 @@ import { LoginService } from '../../core/services/login.service';
 export class LoginPageComponent {
   @Input() username: string;
   @Input() password: string;
-  @Output() login = new EventEmitter();
+
 
   constructor(private loginService: LoginService) { }
 
   onSubmit(): void {
-    this.loginService.login(this.username, this.password).subscribe(user => {
-      this.loginService.writeUser(user);
-      this.login.emit(user);
-    });
+    this.loginService.login(this.username, this.password);
   }
 
 }

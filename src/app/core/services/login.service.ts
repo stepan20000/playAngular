@@ -2,52 +2,46 @@ import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { IUser } from '../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
 
 const loginApi = 'http://localhost:1337/login';
 
+const defaultUser: IUser = {
+  name: 'Default User',
+  isLogined: false
+};
+
 @Injectable()
 export class LoginService {
-  user;
 
-  constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
+  constructor(private localStorageService: LocalStorageService, private http: HttpClient) {}
 
-  }
+  private subject = new BehaviorSubject<IUser>(defaultUser);
 
+  user$: Observable<IUser> = this.subject.asObservable();
 
-  getUser(): void {
-    if (this.user)  { return; }
-    const savedUser = this.localStorageService.get('user');
-    if (savedUser) {
-      this.user = savedUser;
-    }
-  }
-
-  login(username: string, password: string): Observable<IUser> {
-    return this.http.post<IUser>(loginApi, {
+  login(username: string, password: string) {
+    this.http.post(loginApi, {
       username,
-      password
+      password})
+      .subscribe((data: IUser) => {
+        this.subject.next(data);
+        this.localStorageService.set('user', data);
     });
   }
 
   logout() {
-    this.user = null;
-    this.clearUserFromLocalStorage();
-  }
-
-  writeUser(user: IUser) {
-    this.user = user;
-    this.localStorageService.set('user', user );
-  }
-
-  clearUserFromLocalStorage(): void {
+    this.subject.next(defaultUser);
     this.localStorageService.remove('user');
   }
 
-  giveUser(): IUser | false {
-    if (this.user) { return this.user; }
-    return false;
+  readUser(): void {
+    this.localStorageService.get('user')
+    ? this.subject.next(this.localStorageService.get('user'))
+    : this.subject.next(defaultUser);
   }
+
 }

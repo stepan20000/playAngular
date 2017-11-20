@@ -1,5 +1,5 @@
-<div class="pages">
-  <app-home-page *ngIf="loginService.user"></app-home-page>
+<div class="pages" *ngIf="loginService.user$ | async as user">
+  <app-home-page *ngIf="user.isLogined"></app-home-page>
 
-  <app-login-page *ngIf="!loginService.user" (login)="onLogin($event)"></app-login-page>
+  <app-login-page *ngIf="!user.isLogined" (login)="onLogin($event)"></app-login-page>
 </div>

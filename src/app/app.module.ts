@@ -23,6 +23,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CourseService } from './core/services/course-service.service';
 import { LoginService } from './core/services/login.service';
 
+import { DateDirective } from './core/directives/date.directive';
+import { GetDurationPipe } from './core/pipes/get-duration.pipe';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { LoginService } from './core/services/login.service';
     CourseItemComponent,
     ModalComponent,
     LoginPageComponent,
+    DateDirective,
+    GetDurationPipe
   ],
   providers: [CourseService, LoginService],
   bootstrap: [AppComponent]

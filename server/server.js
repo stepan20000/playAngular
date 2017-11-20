@@ -13,7 +13,8 @@ let courses = [
     Phasellus non turpis ut mauris fringilla ornare non non dolor. Integer ac odio nec orci l
     uctus consectetur pretium sed turpis. Vivamus non metus vehicula purus vulputate blandit in interdum eni
     m. Donec ut metus hendrerit, commodo mauris et, convallis justo. Etiam condimentum ex neque. Nullam portt
-    itor pretium imperdiet. Sed eget lobortis nisl, ultricies mollis lacus. `
+    itor pretium imperdiet. Sed eget lobortis nisl, ultricies mollis lacus. `,
+        topRated: true
     },
     {
         id: 2,
@@ -24,7 +25,8 @@ let courses = [
     vitae libero in sagittis. Mauris semper, sapien et pharetra interdum, erat leo aliquam nibh, vel egestas
     enim ligula vel arcu. Etiam libero justo, dignissim et orci a, auctor egestas erat.
      Donec ultrices fermentum ultricies. Curabitur vel lectus placerat, rhoncus risus vitae, congue purus
-     Sed luctus nulla turpis, vel commodo nisl venenatis at. . `
+     Sed luctus nulla turpis, vel commodo nisl venenatis at. . `,
+      topRated: false
     },
     {
         id: 3,
@@ -34,8 +36,27 @@ let courses = [
         description: `Mauris at pellentesque leo. Quisque tempor porttitor tortor, et rutrum elit egestas ultricies
     . Sed aliquam molestie mi, vel ornare erat. Vestibulum cursus nisi quam, ut
     fringilla libero molestie sed. Donec eu nisi et enim eleifend posuere. Fusce
-    sem metus, viverra vel odio in, mattis laoreet arcu. Pellentesque venenatis mollis ex id porta`
+    sem metus, viverra vel odio in, mattis laoreet arcu. Pellentesque venenatis mollis ex id porta`,
+      topRated: true
     },
+    {
+      id: 4,
+      title: 'Future course',
+      creatingDate: 1519997600000,
+      duration: 88,
+      description: `Curabitur vel lectus placerat, rhoncus risus vitae, congue purus
+     Sed luctus nulla turpis, vel commodo nisl venenatis at.`,
+      topRated: false
+    },
+  {
+    id: 5,
+    title: 'Fresh course',
+    creatingDate: 1511193306780,
+    duration: 45875,
+    description: `rhoncus risus vitae, congue purus
+     Sed luctus nulla turpis, vel commodo nisl venenatis at.`,
+    topRated: false
+  },
 ];
 
 const users = [
@@ -43,6 +64,10 @@ const users = [
     { name: 'Bill', username: 'b', password: '2'}
 ];
 
+const defaultUser = {
+  name: 'Default User',
+  isLogined: false
+};
 
 
 app.use(bodyParser.json());
@@ -82,7 +107,7 @@ app.post('/login', function(request, response){
             isLogined: true
         });
     } else {
-        response.status(401).send('Invalin credential')
+        response.status(401).send(defaultUser);
     }
 });
 

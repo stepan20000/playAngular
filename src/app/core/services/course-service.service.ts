@@ -24,7 +24,9 @@ export class CourseService {
   courses$: Observable<ICourseItem[]> = this.subject.asObservable();
 
   getCourses() {
-    this.http.get(getCoursesApi).subscribe((data: Array<ICourseItem>) => this.subject.next(data));
+    this.http.get(getCoursesApi).
+      subscribe((data: Array<ICourseItem>) => this.subject.
+      next(data.sort((a, b) => b.creatingDate - a.creatingDate )));
   }
 
   getCourse(id: number): Observable<ICourseItem> {
@@ -39,8 +41,9 @@ export class CourseService {
     return this.http.post<ICourseItem[]>(updateCourseApi, course);
   }
 
-  deleteCourse(idForDeleting: number): Observable<ICourseItem[]> {
-    return this.http.get<ICourseItem[]>(`${deleteCourseApi}/${idForDeleting}`);
+  deleteCourse(idForDeleting: number) {
+    this.http.get<ICourseItem[]>(`${deleteCourseApi}/${idForDeleting}`)
+      .subscribe((data: Array<ICourseItem>) => this.subject.next(data));
   }
 
 }

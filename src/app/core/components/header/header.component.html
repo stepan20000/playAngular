@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" *ngIf="loginService.user$ | async as user">
   <div class="header__container header__container_logo">
     <figure class="header__img-wrapper">
       <img class="header__logo-img" src="assets\img\angular-logo.png" alt="Logo">
@@ -9,12 +9,12 @@
     <p class="header__courses">Courses</p>
   </div>
   <div class="header__container header__container_login">
-    <p *ngIf="loginService.user && loginService.user.isLogined">{{loginService.user.name}}</p>
+    <p *ngIf="user.isLogined">{{user.name}}</p>
     <a
       href="#"
-      *ngIf="loginService.user && loginService.user.isLogined"
+      *ngIf="user.isLogined"
       (click)="onLogoff($event)"
     >Logoff</a>
-    <p *ngIf="!loginService.user">Login</p>
+    <p *ngIf="!user.isLogined">Login</p>
   </div>
 </header>

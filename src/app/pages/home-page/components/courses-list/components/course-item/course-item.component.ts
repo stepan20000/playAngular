@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { ICourseItem } from '../../../../../../core/interfaces/course-item.interface';
+import { DateDirective } from '../../../../../../core/directives/date.directive';
+
 
 @Component({
   selector: 'app-course-item',
@@ -11,14 +13,6 @@ import { ICourseItem } from '../../../../../../core/interfaces/course-item.inter
 export class CourseItemComponent {
   @Input() course: ICourseItem;
   @Output() deleteCourse = new EventEmitter();
-
-  getDuration(): string {
-    let hours, minutes;
-    const t = this.course.duration;
-    hours = Math.floor(t / 60);
-    minutes = t - hours * 60;
-    return `${hours > 0 ? hours + 'h' : ''} ${minutes}min`;
-  }
 
   onDeleteCourse() {
     this.deleteCourse.emit(this.course);

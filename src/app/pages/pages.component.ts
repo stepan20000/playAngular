@@ -14,7 +14,6 @@ export class PagesComponent implements OnInit {
   constructor(protected loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.getUser();
   }
 
   onLogin(e) {
