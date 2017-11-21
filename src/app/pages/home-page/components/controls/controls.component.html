@@ -1,5 +1,5 @@
 <div class="controls">
-  <form (ngSubmit)="onSubmit(); findForm.reset();" #findForm="ngForm">
+  <form (ngSubmit)="onSubmit(findForm); findForm.reset();" #findForm="ngForm">
     <input
       class="controls__input"
       type="text"
@@ -10,5 +10,6 @@
     >
     <button class="controls__find" [disabled]="findForm.form.invalid">Find</button>
   </form>
+  <button class="controls__find" (click)="onReset()">Reset</button>
   <button class="controls__add">Add course</button>
 </div>

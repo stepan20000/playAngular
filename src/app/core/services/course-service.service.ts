@@ -25,8 +25,7 @@ export class CourseService {
 
   getCourses() {
     this.http.get(getCoursesApi).
-      subscribe((data: Array<ICourseItem>) => this.subject.
-      next(data.sort((a, b) => b.creatingDate - a.creatingDate )));
+      subscribe((data: Array<ICourseItem>) => this.subject.next(data));
   }
 
   getCourse(id: number): Observable<ICourseItem> {

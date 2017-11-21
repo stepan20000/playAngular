@@ -7,10 +7,19 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent implements OnInit {
-
+  filter = '';
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onFilter(str: string) {
+    console.log('onFilter', str);
+    this.filter = str;
+  }
+
+  onResetFilter() {
+    this.filter = '';
   }
 
 }

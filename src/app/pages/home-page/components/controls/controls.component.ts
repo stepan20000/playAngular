@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-controls',
@@ -7,14 +7,17 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControlsComponent {
-
+  @Output() filter = new EventEmitter();
+  @Output() resetFilter = new EventEmitter();
   textToFind: string;
 
   constructor() { }
 
-  onSubmit() {
-    console.log('onSubmit Form', this.textToFind);
+  onSubmit(e) {
+    this.filter.emit(this.textToFind);
   }
 
-
+  onReset() {
+    this.resetFilter.emit();
+  }
 }

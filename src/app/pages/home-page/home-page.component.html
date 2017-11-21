@@ -1,2 +1,2 @@
-<app-controls></app-controls>
-<app-courses-list></app-courses-list>
+<app-controls (filter)="onFilter($event)" (resetFilter)="onResetFilter()"></app-controls>
+<app-courses-list [filterStr]="filter"></app-courses-list>

@@ -25,6 +25,8 @@ import { LoginService } from './core/services/login.service';
 
 import { DateDirective } from './core/directives/date.directive';
 import { GetDurationPipe } from './core/pipes/get-duration.pipe';
+import { OrderByDatePipe } from './core/pipes/order-by-date.pipe';
+import { FilterPipe } from './core/pipes/filter.pipe';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { GetDurationPipe } from './core/pipes/get-duration.pipe';
     ModalComponent,
     LoginPageComponent,
     DateDirective,
-    GetDurationPipe
+    GetDurationPipe,
+    OrderByDatePipe,
+    FilterPipe
   ],
   providers: [CourseService, LoginService],
   bootstrap: [AppComponent]

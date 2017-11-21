@@ -11,6 +11,7 @@ import { ICourseItem } from '../../../../core/interfaces/course-item.interface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesListComponent  {
+  @Input() filterStr: string;
   courses: Array<ICourseItem>;
 
   isDeleteModalShown: boolean;

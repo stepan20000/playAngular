@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
-const secInDay = 24 * 60 * 60;
+const secInDay = 24 * 60 * 60 * 1000;
 
 @Directive({
   selector: '[app-DateDirective]'
@@ -14,7 +14,6 @@ export class DateDirective implements OnChanges{
   }
 
   ngOnChanges() {
-    console.log('ngOnChanges', this.date);
     if (this.date < this.currentDate && this.date >= this.currentDate - secInDay * 14) {
       this.el.nativeElement.classList.add('fresh');
     }
